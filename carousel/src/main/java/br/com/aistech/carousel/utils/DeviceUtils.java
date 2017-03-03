@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.Surface;
 import android.view.WindowManager;
 
-import br.com.aistech.carousel.enuns.DeviceOrientation;
+import br.com.aistech.carousel.enums.DeviceOrientation;
 
 
 /**

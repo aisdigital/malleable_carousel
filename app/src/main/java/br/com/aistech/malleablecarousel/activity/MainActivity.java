@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         carouselViewPager.setCurrentItem(0, true);
         carouselViewPager.setOffscreenPageLimit(3);
         carouselViewPager.setPageMargin(mainPersonAdapter.getPageMargin());
+        carouselViewPager.setClipToPadding(false);
         circlePageIndicator.setViewPager(carouselViewPager, 0);
     }
 }
