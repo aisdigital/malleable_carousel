@@ -2,9 +2,7 @@ package br.com.aistech.malleablecarousel.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import br.com.aistech.carousel.fragments.CarouselFragment;
@@ -32,14 +30,13 @@ public class PersonCarouselFragment extends CarouselFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        titleTextView = (TextView) rootView.findViewById(R.id.carousel_title);
+        titleTextView = (TextView) view.findViewById(R.id.carousel_title);
 
         titleTextView.setText(person.getName());
 
-        return rootView;
     }
 
     @Override

@@ -57,7 +57,7 @@ public class MainPersonAdapter extends CarouselAdapter<Person> {
             DisplayMetrics dm = new DisplayMetrics();
             ((Activity) getContext()).getWindow().getWindowManager().getDefaultDisplay().getMetrics(dm);
             int width = dm.widthPixels;
-            return (int) ((width / 2.2) * -1);
+            return (int) ((width / 2.3) * -1);
         }
         return 0;
     }
