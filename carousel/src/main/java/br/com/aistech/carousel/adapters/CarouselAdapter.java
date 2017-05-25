@@ -23,10 +23,10 @@ import br.com.aistech.carousel.utils.FragmentPagerUtils;
 
 public abstract class CarouselAdapter<T> extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener {
 
-    protected final static Integer FIRST_PAGE = 0;
+    public final static Integer FIRST_PAGE = 0;
 
     public final static Float BIG_SCALE = 0.85f;
-    public final static Float SMALL_SCALE = 0.35f;
+    public final static Float SMALL_SCALE = 0.50f;
 
     private List<T> objects;
 
@@ -50,7 +50,7 @@ public abstract class CarouselAdapter<T> extends FragmentPagerAdapter implements
         // Make the first pager bigger than others
         Float scale;
 
-        if (position == FIRST_PAGE) {
+        if (position == getDefaultPosition()) {
             scale = getBigScale();
         } else {
             scale = getSmallScale();
@@ -74,15 +74,15 @@ public abstract class CarouselAdapter<T> extends FragmentPagerAdapter implements
             CarouselAnimation current = getFragmentRootView(position);
 
             if (positionOffset >= 0f && positionOffset <= 1f) {
-                current.setScaleBoth(BIG_SCALE - getDiffScale() * positionOffset);
+                current.setScaleBoth(getBigScale() - getDiffScale() * positionOffset);
 
                 if (position < getCount() - 1) {
                     CarouselAnimation next = getFragmentRootView(position + 1);
-                    next.setScaleBoth(SMALL_SCALE + getDiffScale() * positionOffset);
+                    next.setScaleBoth(getSmallScale() + getDiffScale() * positionOffset);
                 }
                 if (position > 0) {
                     CarouselAnimation previous = getFragmentRootView(position - 1);
-                    previous.setScaleBoth(SMALL_SCALE - getDiffScale() * positionOffset);
+                    previous.setScaleBoth(getSmallScale() - getDiffScale() * positionOffset);
                 }
             }
         } catch (Exception e) {
@@ -157,16 +157,20 @@ public abstract class CarouselAdapter<T> extends FragmentPagerAdapter implements
         return objects;
     }
 
-    protected Float getBigScale() {
+    public Float getBigScale() {
         return BIG_SCALE;
     }
 
-    protected Float getSmallScale() {
+    public Float getSmallScale() {
         return SMALL_SCALE;
     }
 
-    protected Float getDiffScale() {
-        return BIG_SCALE - SMALL_SCALE;
+    public Float getDiffScale() {
+        return getBigScale() - getSmallScale();
+    }
+
+    protected Integer getDefaultPosition() {
+        return FIRST_PAGE;
     }
 
     private Integer getLastPagePosition() {

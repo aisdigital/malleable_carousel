@@ -47,7 +47,7 @@ public class MainPersonAdapter extends CarouselAdapter<Person> {
             DisplayMetrics dm = new DisplayMetrics();
             ((Activity) getContext()).getWindow().getWindowManager().getDefaultDisplay().getMetrics(dm);
             int width = dm.widthPixels;
-            return ((width / 3) * -1) * 2;
+            return (int) (width / -1.5);
         }
         return 0;
     }
@@ -57,8 +57,13 @@ public class MainPersonAdapter extends CarouselAdapter<Person> {
             DisplayMetrics dm = new DisplayMetrics();
             ((Activity) getContext()).getWindow().getWindowManager().getDefaultDisplay().getMetrics(dm);
             int width = dm.widthPixels;
-            return (int) ((width / 2.3) * -1);
+            return (int) (width / -2.3);
         }
         return 0;
+    }
+
+    @Override
+    public Float getSmallScale() {
+        return 0.70f;
     }
 }
